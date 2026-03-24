@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 26% 5%;
+    --foreground: 210 30% 88%;
+    --card: 222 26% 8%;
+    --card-foreground: 210 30% 88%;
+    --popover: 222 26% 8%;
+    --popover-foreground: 210 30% 88%;
+    --primary: 10 92% 49%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 22% 12%;
+    --secondary-foreground: 210 30% 88%;
+    --muted: 222 22% 14%;
+    --muted-foreground: 215 18% 50%;
+    --accent: 222 22% 14%;
+    --accent-foreground: 210 30% 88%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 22% 12%;
+    --input: 222 22% 12%;
+    --ring: 10 92% 49%;
+    --radius: 0.5rem;
+
+    /* Ra Soft brand colors */
+    --red: #E8280B;
+    --red2: #ff4422;
+    --orange: #F76B1C;
+    --gold: #FFAB00;
+    --teal: #00D4AA;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Outfit', sans-serif;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Glowing effect CSS variables */
+:root {
+  --black: #000;
+  --white: #fff;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* Blink animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+.animate-blink {
+  animation: blink 1.8s ease-in-out infinite;
+}
