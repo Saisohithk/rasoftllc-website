@@ -8,9 +8,7 @@ import { CommonModule } from '@angular/common';
   template: `
     <section class="py-24 px-[5vw] bg-[#07090f]">
       <div class="max-w-7xl mx-auto">
-        <div class="flex items-center gap-3 text-[#E8280B] text-xs font-bold tracking-[2.5px] uppercase mb-4">
-          <span class="w-6 h-px bg-[#E8280B]"></span> Why RA SOFT LLC
-        </div>
+        <div class="flex items-center gap-3 text-[#E8280B] text-xs font-bold tracking-[2.5px] uppercase mb-4"><span class="w-6 h-px bg-[#E8280B]"></span>Why RA SOFT LLC</div>
         <h2 class="font-heading text-white mb-14 tracking-wide" style="font-size:clamp(32px,4vw,58px)">The Partner Your<br>Mission Deserves</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.04]">
           @for (item of items; track item.title) {

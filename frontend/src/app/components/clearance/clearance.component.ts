@@ -10,23 +10,14 @@ import { CommonModule } from '@angular/common';
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/25 text-amber-400 text-xs font-bold tracking-[2px] uppercase px-4 py-2 mb-5">
-              ⭐ Cleared Staffing Specialists
-            </div>
-            <h2 class="font-heading text-white mb-5 tracking-wide" style="font-size:clamp(28px,3.5vw,50px)">
-              Security Clearance<br>Experts
-            </h2>
-            <p class="text-sm text-white/40 leading-relaxed mb-8 font-light">
-              We maintain an active, pre-vetted pipeline of cleared professionals at all levels — ready to support your most sensitive federal programs without the months-long search.
-            </p>
+            <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/25 text-amber-400 text-xs font-bold tracking-[2px] uppercase px-4 py-2 mb-5">⭐ Cleared Staffing Specialists</div>
+            <h2 class="font-heading text-white mb-5 tracking-wide" style="font-size:clamp(28px,3.5vw,50px)">Security Clearance<br>Experts</h2>
+            <p class="text-sm text-white/40 leading-relaxed mb-8 font-light">We maintain an active, pre-vetted pipeline of cleared professionals at all levels — ready to support your most sensitive federal programs without the months-long search.</p>
             <div class="grid grid-cols-2 gap-3">
               @for (lv of levels; track lv.label) {
                 <div class="flex items-center gap-3 bg-[#141a28] border border-white/[0.08] p-3 rounded">
                   <span class="w-2 h-2 rounded-full flex-shrink-0" [style.background]="lv.color"></span>
-                  <div>
-                    <div class="text-xs font-semibold text-white">{{lv.label}}</div>
-                    <div class="text-[10px] text-white/35">{{lv.sub}}</div>
-                  </div>
+                  <div><div class="text-xs font-semibold text-white">{{lv.label}}</div><div class="text-[10px] text-white/35">{{lv.sub}}</div></div>
                 </div>
               }
             </div>

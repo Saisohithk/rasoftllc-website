@@ -9,20 +9,13 @@ import { GlowingEffectDirective } from '../../directives/glowing-effect.directiv
   template: `
     <section class="py-24 px-[5vw] bg-[#0b0e18]">
       <div class="max-w-7xl mx-auto">
-        <div class="flex items-center gap-3 text-[#E8280B] text-xs font-bold tracking-[2.5px] uppercase mb-4">
-          <span class="w-6 h-px bg-[#E8280B]"></span> Our Services
-        </div>
-        <h2 class="font-heading text-white mb-3 tracking-wide" style="font-size:clamp(32px,4vw,58px)">
-          Specialized Staffing,<br>Zero Compromise
-        </h2>
-        <p class="text-sm text-white/40 max-w-md mb-14 font-light leading-relaxed">
-          Every recruiter on our team understands the technology, compliance requirements, and culture of the role they're filling.
-        </p>
+        <div class="flex items-center gap-3 text-[#E8280B] text-xs font-bold tracking-[2.5px] uppercase mb-4"><span class="w-6 h-px bg-[#E8280B]"></span>Our Services</div>
+        <h2 class="font-heading text-white mb-3 tracking-wide" style="font-size:clamp(32px,4vw,58px)">Specialized Staffing,<br>Zero Compromise</h2>
+        <p class="text-sm text-white/40 max-w-md mb-14 font-light leading-relaxed">Every recruiter on our team understands the technology, compliance requirements, and culture of the role they're filling.</p>
         <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           @for (svc of services; track svc.title) {
             <li class="min-h-[220px] list-none">
-              <div appGlowingEffect [glowDisabled]="false" [glowSpread]="30" [glowProximity]="60"
-                   class="relative h-full rounded-lg border border-white/[0.08] p-1 bg-[#0f1420]">
+              <div appGlowingEffect [glowDisabled]="false" [glowProximity]="60" class="relative h-full rounded-lg border border-white/[0.08] p-1 bg-[#0f1420]">
                 <div class="relative h-full p-6 flex flex-col">
                   <div class="text-2xl mb-4">{{svc.emoji}}</div>
                   <h3 class="font-heading text-lg tracking-wide text-white mb-2">{{svc.title}}</h3>

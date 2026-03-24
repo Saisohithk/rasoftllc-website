@@ -10,10 +10,8 @@ import { ClearanceComponent } from './components/clearance/clearance.component';
 import { IndustriesComponent } from './components/industries/industries.component';
 import { ProcessComponent } from './components/process/process.component';
 import { WhyUsComponent } from './components/why-us/why-us.component';
-import { LimelightNavComponent } from './components/limelight-nav/limelight-nav.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { CtaComponent } from './components/cta/cta.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
@@ -31,10 +29,8 @@ import { FooterComponent } from './components/footer/footer.component';
     IndustriesComponent,
     ProcessComponent,
     WhyUsComponent,
-    LimelightNavComponent,
     TestimonialsComponent,
     ContactComponent,
-    CtaComponent,
     FooterComponent,
   ],
   template: `
@@ -48,12 +44,8 @@ import { FooterComponent } from './components/footer/footer.component';
     <section id="industries"><app-industries /></section>
     <section id="process"><app-process /></section>
     <section id="why-us"><app-why-us /></section>
-    <div class="py-12 px-[5vw] bg-[#0b0e18] flex justify-center">
-      <app-limelight-nav />
-    </div>
     <section id="testimonials"><app-testimonials /></section>
     <section id="contact"><app-contact /></section>
-    <app-cta />
     <app-footer />
   `,
 })

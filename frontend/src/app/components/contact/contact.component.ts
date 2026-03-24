@@ -10,15 +10,10 @@ import { ContactService } from '../../services/contact.service';
   template: `
     <section class="py-24 px-[5vw] bg-[#07090f]">
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        <!-- Info -->
         <div>
-          <div class="flex items-center gap-3 text-[#E8280B] text-xs font-bold tracking-[2.5px] uppercase mb-4">
-            <span class="w-6 h-px bg-[#E8280B]"></span> Let's Work Together
-          </div>
+          <div class="flex items-center gap-3 text-[#E8280B] text-xs font-bold tracking-[2.5px] uppercase mb-4"><span class="w-6 h-px bg-[#E8280B]"></span>Let's Work Together</div>
           <h2 class="font-heading text-white mb-4 tracking-wide" style="font-size:clamp(28px,3.5vw,52px)">Tell Us What<br>You Need</h2>
-          <p class="text-sm text-white/40 leading-relaxed mb-10 font-light max-w-sm">
-            Whether you need a single cleared architect or a team of 60 cloud engineers, RA SOFT LLC is ready to mobilize.
-          </p>
+          <p class="text-sm text-white/40 leading-relaxed mb-10 font-light max-w-sm">Whether you need a single cleared architect or a team of 60 cloud engineers, RA SOFT LLC is ready to mobilize.</p>
           @for (info of infoItems; track info.label) {
             <div class="flex items-start gap-4 py-5 border-b border-white/[0.06]">
               <div class="w-10 h-10 bg-[#141a28] border border-white/[0.08] flex items-center justify-center text-base flex-shrink-0">{{info.icon}}</div>
@@ -29,16 +24,13 @@ import { ContactService } from '../../services/contact.service';
             </div>
           }
         </div>
-
-        <!-- Form -->
         <div class="bg-[#0b0e18] border border-white/[0.10] p-10">
           <h3 class="font-heading text-2xl tracking-wide text-white mb-7">Request Talent</h3>
-
           @if (submitted()) {
-            <div class="rounded border border-green-500/30 bg-green-500/10 p-6 text-center text-green-300">
-              <div class="text-2xl mb-2">✅</div>
-              <p class="font-semibold">Request Submitted!</p>
-              <p class="text-sm text-green-400/70 mt-1">A specialist will respond within 1 business day.</p>
+            <div class="rounded border border-green-500/30 bg-green-500/10 p-8 text-center text-green-300">
+              <div class="text-3xl mb-3">✅</div>
+              <p class="font-semibold text-lg">Request Submitted!</p>
+              <p class="text-sm text-green-400/70 mt-2">A specialist will respond within 1 business day.</p>
             </div>
           } @else {
             <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
@@ -54,7 +46,7 @@ import { ContactService } from '../../services/contact.service';
               </div>
               <div>
                 <label class="block text-[10px] font-bold tracking-[1px] uppercase text-white/40 mb-2">Work Email</label>
-                <input formControlName="email" type="email" class="w-full px-3 py-3 bg-[#141a28] border border-white/[0.10] text-white text-sm focus:outline-none focus:border-[#E8280B] transition-colors" placeholder="you@agency.gov">
+                <input formControlName="email" type="email" class="w-full px-3 py-3 bg-[#141a28] border border-white/[0.10] text-white text-sm focus:outline-none focus:border-[#E8280B] transition-colors" placeholder="you&#64;agency.gov">
               </div>
               <div>
                 <label class="block text-[10px] font-bold tracking-[1px] uppercase text-white/40 mb-2">Company / Agency</label>
@@ -91,9 +83,7 @@ import { ContactService } from '../../services/contact.service';
                 <label class="block text-[10px] font-bold tracking-[1px] uppercase text-white/40 mb-2">Tell Us About Your Need</label>
                 <textarea formControlName="message" rows="4" class="w-full px-3 py-3 bg-[#141a28] border border-white/[0.10] text-white text-sm focus:outline-none focus:border-[#E8280B] transition-colors resize-none" placeholder="Describe your requirements..."></textarea>
               </div>
-              <button type="submit" [disabled]="loading()"
-                class="w-full py-4 bg-[#E8280B] text-white font-heading text-lg tracking-[2px] hover:bg-[#ff4422] disabled:opacity-60 transition-colors mt-2"
-                style="clip-path:polygon(0 0,97% 0,100% 30%,100% 100%,3% 100%,0 70%)">
+              <button type="submit" [disabled]="loading()" class="w-full py-4 bg-[#E8280B] text-white font-heading text-lg tracking-[2px] hover:bg-[#ff4422] disabled:opacity-60 transition-colors mt-2" style="clip-path:polygon(0 0,97% 0,100% 30%,100% 100%,3% 100%,0 70%)">
                 {{loading() ? 'SUBMITTING...' : 'SUBMIT REQUEST →'}}
               </button>
               <p class="text-[11px] text-white/25 text-center">A specialist will respond within 1 business day.</p>
@@ -107,7 +97,6 @@ import { ContactService } from '../../services/contact.service';
 export class ContactComponent {
   submitted = signal(false);
   loading = signal(false);
-
   form = this.fb.group({
     firstName: ['', Validators.required],
     lastName: [''],
@@ -117,16 +106,12 @@ export class ContactComponent {
     clearanceLevel: [''],
     message: [''],
   });
-
   infoItems = [
     { icon:'📧', label:'Email', val:'talent@rasoftllc.com' },
-    { icon:'📞', label:'Phone', val:'(703) 555-0190' },
-    { icon:'📍', label:'Headquarters', val:'Washington D.C. Metro Area · Nationwide' },
-    { icon:'🔖', label:'Contract Vehicles', val:'NAICS 561320 · GSA Schedule · DCAA Compliant' },
+    { icon:'📞', label:'Phone', val:'(720) 560-3742' },
+    { icon:'📍', label:'Headquarters', val:'Laurel, Maryland, USA' },
   ];
-
   constructor(private fb: FormBuilder, private contactService: ContactService) {}
-
   submit() {
     if (this.form.invalid) return;
     this.loading.set(true);

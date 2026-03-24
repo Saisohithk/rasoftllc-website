@@ -9,9 +9,7 @@ import { CommonModule } from '@angular/common';
     <div class="bg-[#E8280B] overflow-hidden py-3">
       <div class="flex w-max animate-marquee">
         @for (item of items; track $index) {
-          <span class="font-heading text-sm tracking-[2px] text-white opacity-90 px-8 whitespace-nowrap">
-            {{item}} <span class="opacity-40 mx-2">✦</span>
-          </span>
+          <span class="font-heading text-sm tracking-[2px] text-white opacity-90 px-8 whitespace-nowrap">{{item}} <span class="opacity-40 mx-2">✦</span></span>
         }
       </div>
     </div>

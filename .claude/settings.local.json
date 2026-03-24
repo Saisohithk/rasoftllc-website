@@ -6,7 +6,11 @@
       "Bash(npx next:*)",
       "Bash(netstat -ano)",
       "Bash(cmd.exe /c \"taskkill /PID 31188 /F\")",
-      "Bash(cmd.exe /c \"taskkill /F /PID 31188 && echo killed\")"
+      "Bash(cmd.exe /c \"taskkill /F /PID 31188 && echo killed\")",
+      "Bash(powershell -Command \"Get-ChildItem D:\\\\myproject\\\\frontend -Recurse -Name | Select-Object -First 30\")",
+      "Bash(powershell -Command \"\\(Get-ChildItem D:\\\\myproject\\\\frontend -Recurse\\).Count\")",
+      "Bash(echo \"exit: $?\")",
+      "Bash(curl:*)"
     ]
   }
 }

@@ -8,13 +8,9 @@ import { CommonModule } from '@angular/common';
   template: `
     <section class="py-24 px-[5vw] bg-[#07090f]">
       <div class="max-w-7xl mx-auto">
-        <div class="flex items-center gap-3 text-[#E8280B] text-xs font-bold tracking-[2.5px] uppercase mb-4">
-          <span class="w-6 h-px bg-[#E8280B]"></span> Industries We Serve
-        </div>
+        <div class="flex items-center gap-3 text-[#E8280B] text-xs font-bold tracking-[2.5px] uppercase mb-4"><span class="w-6 h-px bg-[#E8280B]"></span>Industries We Serve</div>
         <h2 class="font-heading text-white mb-3 tracking-wide" style="font-size:clamp(32px,4vw,58px)">Deep Domain<br>Expertise</h2>
-        <p class="text-sm text-white/40 max-w-md mb-14 font-light leading-relaxed">
-          Our recruiters specialize by vertical — not by job title. Every candidate we submit already understands your industry's compliance, tools, and culture.
-        </p>
+        <p class="text-sm text-white/40 max-w-md mb-14 font-light leading-relaxed">Our recruiters specialize by vertical — not by job title. Every candidate we submit already understands your industry's compliance, tools, and culture.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           @for (ind of industries; track ind.num) {
             <div class="group bg-[#0b0e18] border border-white/[0.06] p-7 hover:border-white/[0.12] hover:-translate-y-1 transition-all relative overflow-hidden cursor-default">
@@ -36,6 +32,6 @@ export class IndustriesComponent {
     { num:'03', title:'Financial Services', desc:'Banks, hedge funds, insurance firms, and fintech companies seeking tech talent with regulatory awareness.', color:'#FFAB00' },
     { num:'04', title:'Healthcare & Life Sciences', desc:'Hospitals, health systems, pharma, and biotech companies requiring HIPAA-savvy IT professionals.', color:'#00D4AA' },
     { num:'05', title:'Energy & Utilities', desc:'Critical infrastructure protection, SCADA systems, and operational technology staffing.', color:'#3B82F6' },
-    { num:'06', title:'Telecommunications', desc:'Network engineers, 5G architects, and software professionals for the world\'s connectivity backbone.', color:'#E8280B' },
+    { num:'06', title:'Telecommunications', desc:"Network engineers, 5G architects, and software professionals for the world's connectivity backbone.", color:'#E8280B' },
   ];
 }

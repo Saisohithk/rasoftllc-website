@@ -1,149 +1,296 @@
-# RA SOFT LLC — IT Staffing Website
-## Implementation Plan (Current State)
+# RA SOFT LLC — Project Plan & Architecture Guide
 
----
+## What Is This Project?
 
-## Project Overview
-**Company:** RA SOFT LLC
-**Type:** IT Staffing & Technology Solutions
-**Location:** Laurel, Maryland, USA
-**Phone:** (720) 560-3742
-**Email:** talent@rasoftllc.com
+This is the official website for **RA SOFT LLC**, an IT staffing and technology solutions company
+based in Laurel, Maryland. The site markets the company's services to federal, commercial, and
+cleared-environment clients.
 
----
-
-## Tech Stack
-
-### Next.js App (Primary Website)
-- **Framework:** Next.js 14 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **UI Library:** shadcn/ui structure
-- **Animations:** Framer Motion, Motion
-- **Icons:** Lucide React
-- **URL:** http://localhost:3000
-
-### Angular App (Alternative Frontend)
-- **Framework:** Angular 17 (Standalone Components)
-- **Styling:** Tailwind CSS
-- **URL:** http://localhost:4200
-
-### Node.js Backend (API)
-- **Framework:** Express.js
-- **URL:** http://localhost:3003
-- **Endpoints:**
-  - `GET /` — API info
-  - `GET /api/health` — Health check
-  - `POST /api/contact` — Contact form submission
-
----
-
-## File Structure
+The project has **three separate parts** that all work together:
 
 ```
 D:/myproject/
-├── app/
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx               ← Main page (all sections)
-├── components/
-│   └── ui/
-│       ├── banner.tsx          ← Top announcement banner
-│       ├── button.tsx          ← shadcn Button
-│       ├── footer-section.tsx  ← Footer with links & contact
-│       ├── glowing-effect.tsx  ← Mouse-tracking glow on cards
-│       ├── google-gemini-effect.tsx ← Scroll-animated SVG paths
-│       ├── limelight-nav.tsx   ← (kept, not used in page)
-│       ├── shape-landing-hero.tsx   ← Animated hero with shapes
-│       └── [button, utils, etc.]
-├── lib/
-│   └── utils.ts               ← cn() utility
-├── frontend/                  ← Angular 17 app
-│   └── src/app/components/    ← 14 Angular components
-├── backend/                   ← Node.js/Express API
-│   └── server.js
-├── package.json
-├── tailwind.config.ts
-├── tsconfig.json
-└── plan.md
+├── app/                  ← Next.js (primary website, goes to production)
+├── components/           ← Shared UI components used by Next.js
+├── backend/              ← Node.js/Express API server (local dev only)
+└── frontend/             ← Angular 17 frontend (mirror of Next.js site)
 ```
 
 ---
 
-## Page Sections (Next.js — Current State)
+## Part 1 — Next.js (Primary Site)
 
-| # | Section | Component/Notes | Status |
-|---|---------|-----------------|--------|
-| 1 | Top Banner | `Banner` — dismissible Q2 2025 announcement | ✅ |
-| 2 | Sticky Navbar | Custom — logo, nav links, mobile menu | ✅ |
-| 3 | Hero | `HeroGeometric` — animated floating shapes, gradient text | ✅ |
-| 4 | Stats Bar | 500+ placements, 48hr submit, 95% retention, 10+ years | ✅ |
-| 5 | Marquee | Red ticker — AI, Cloud, DoD, Healthcare, Fintech, Cyber | ✅ |
-| 6 | Services | 6 cards with `GlowingEffect` — AI/ML, Cloud, DoD, Fintech, Healthcare, Cyber | ✅ |
-| 7 | Gemini Scroll | `GoogleGeminiEffect` — scroll-animated SVG paths, 3-viewport height | ✅ |
-| 8 | Clearance | Security clearance levels — Public Trust → Full Scope Poly, 2,500+ candidates | ✅ |
-| 9 | Industries | 6 industry cards — Defense, Federal, Finance, Healthcare, Energy, Telecom | ✅ |
-| 10 | Process | 4-step grid — Discovery → Search → Vetting → Onboarding | ✅ |
-| 11 | Why Us | 6-item grid — Vertical Recruiters, Pipeline, 48hr, Compliance, Flex, Teams | ✅ |
-| 12 | Testimonials | 3 client quotes — Defense PM, Health VP, Fintech CTO | ✅ |
-| 13 | Contact Form | Form with HTTP POST to backend — name, email, company, service, clearance, message | ✅ |
-| 14 | Footer | `Footer` — links, contact info, copyright | ✅ |
+**Location:** `D:/myproject/`
+**Running at:** http://localhost:3000
+**Goes live at:** https://rasoftllc.com (via Vercel)
 
-### Removed Sections
-- ~~LimelightNav (section dock)~~ — removed per user request
-- ~~Final CTA ("Your Next Critical Hire")~~ — removed per user request
+This is the **real production site**. It uses:
+- **Next.js 14** with App Router
+- **TypeScript**
+- **Tailwind CSS** for styling
+- **Framer Motion** for animations
+
+### Key Files
+
+| File | Purpose |
+|------|---------|
+| `app/page.tsx` | Main page — assembles all sections in order |
+| `app/layout.tsx` | HTML shell, loads Google Fonts (Bebas Neue + Outfit) |
+| `app/globals.css` | Global styles, Tailwind base |
+| `app/api/contact/route.ts` | Contact form API endpoint (built into Next.js) |
+
+### UI Components (`components/ui/`)
+
+| File | What It Does |
+|------|-------------|
+| `banner.tsx` | Dismissible amber warning/announcement bar at top |
+| `shape-landing-hero.tsx` | Hero section with animated floating geometric shapes |
+| `glowing-effect.tsx` | Mouse-proximity glowing border on cards |
+| `google-gemini-effect.tsx` | Animated SVG wave lines (scroll-driven animation) |
+| `footer-section.tsx` | Site footer with links, contact info, copyright |
+| `limelight-nav.tsx` | Tab navigation bar (exists but not used on the page) |
+| `button.tsx` | Reusable button component |
+
+### Page Sections (top to bottom)
+
+1. **Banner** — "Now Hiring" or announcement bar
+2. **Navbar** — logo + navigation links
+3. **Hero** — headline, subtext, CTA buttons, floating shapes
+4. **Marquee** — scrolling ticker of tech stack / keywords
+5. **Services** — cards for each service offering (with glowing effect)
+6. **Gemini Scroll** — animated SVG lines that draw as you scroll
+7. **Clearance** — security clearance levels supported
+8. **Industries** — sectors served (Federal, Defense, Healthcare, etc.)
+9. **Process** — how the hiring process works (steps)
+10. **Why Us** — differentiators / value propositions
+11. **Testimonials** — client quotes
+12. **Contact** — form + contact info (phone, email, address)
+13. **Footer** — links, social, copyright
+
+### Contact Info
+- **Phone:** (720) 560-3742
+- **Email:** talent@rasoftllc.com
+- **Address:** Laurel, Maryland, USA
+
+### Contact Form API
+The form at the bottom submits to `/api/contact` (same Next.js server).
+File: `app/api/contact/route.ts`
+- Accepts POST with: `firstName`, `lastName`, `email`, `company`, `serviceArea`, `clearanceLevel`, `message`
+- Validates: `firstName` and `email` are required
+- Currently logs to console (replace with Resend/SendGrid for real emails)
 
 ---
 
-## Contact Info (Current)
-| Field | Value |
-|-------|-------|
-| Phone | (720) 560-3742 |
-| Address | Laurel, Maryland, USA |
-| Email | talent@rasoftllc.com |
+## Part 2 — Node.js Backend
 
----
+**Location:** `D:/myproject/backend/`
+**Running at:** http://localhost:3003
+**Purpose:** Standalone API server for local development / Angular frontend use
 
-## Components Used
-| Component | File | Where Used |
-|-----------|------|------------|
-| Banner | `components/ui/banner.tsx` | Top announcement bar |
-| HeroGeometric | `components/ui/shape-landing-hero.tsx` | Hero section |
-| GlowingEffect | `components/ui/glowing-effect.tsx` | Service cards |
-| GoogleGeminiEffect | `components/ui/google-gemini-effect.tsx` | Scroll animation section |
-| Footer | `components/ui/footer-section.tsx` | Page footer |
+### Files
 
----
+| File | Purpose |
+|------|---------|
+| `server.js` | Express server with CORS, health check, contact endpoint |
+| `package.json` | Dependencies: express, cors, nodemon |
 
-## Running the Project
+### API Endpoints
 
-### Next.js (primary)
+| Method | Route | Description |
+|--------|-------|-------------|
+| GET | `/` | API info page (company name, available endpoints) |
+| GET | `/api/health` | Health check — returns `{ status: "ok" }` |
+| POST | `/api/contact` | Contact form submission |
+
+### How to Start
+
 ```bash
+cd D:/myproject/backend
+node server.js
+# OR for auto-restart on changes:
+npm run dev
+```
+
+### CORS Origins Allowed
+- http://localhost:3000 (Next.js)
+- http://localhost:4200 (Angular default)
+- http://localhost:4201 (Angular alternate port)
+
+---
+
+## Part 3 — Angular 17 Frontend
+
+**Location:** `D:/myproject/frontend/`
+**Running at:** http://localhost:4201
+**Purpose:** Angular version of the same website (mirrors Next.js exactly)
+
+This is a full rebuild of the Next.js site using Angular 17 standalone components.
+It talks to the Node.js backend (`localhost:3003`) for form submissions.
+
+### How to Start
+
+```bash
+cd D:/myproject/frontend
+npm install                              # first time only
+npx ng serve --host 0.0.0.0 --port 4201
+```
+
+### File Structure
+
+```
+frontend/src/
+├── main.ts                             ← Angular bootstrap entry point
+├── index.html                          ← HTML shell
+├── styles.css                          ← Tailwind + custom CSS keyframes
+└── app/
+    ├── app.component.ts                ← Root component, assembles all sections
+    ├── app.config.ts                   ← Angular app config
+    ├── services/
+    │   └── contact.service.ts          ← HTTP service for form submission
+    ├── directives/
+    │   └── glowing-effect.directive.ts ← Mouse-proximity glow (Angular equivalent)
+    └── components/
+        ├── banner/
+        ├── navbar/
+        ├── hero/
+        ├── marquee/
+        ├── services/
+        ├── gemini-scroll/
+        ├── clearance/
+        ├── industries/
+        ├── process/
+        ├── why-us/
+        ├── testimonials/
+        ├── contact/
+        └── footer/
+```
+
+Each component is a single `.ts` file using Angular's **inline template** style
+(no separate HTML files). All use `standalone: true`.
+
+### Angular vs Next.js Differences
+
+| Feature | Next.js | Angular |
+|---------|---------|---------|
+| Animations | Framer Motion | CSS keyframes |
+| State | React `useState` | Angular `signal()` |
+| Loops | `{items.map(...)}` | `@for (item of items)` |
+| Conditionals | `{condition && <X/>}` | `@if (condition)` |
+| HTTP calls | `fetch()` | `HttpClient` service |
+| Email `@` in template | Works normally | Must use `&#64;` (NG5002 error) |
+
+---
+
+## How Everything Connects
+
+```
+Browser
+  │
+  ├─→ localhost:3000  (Next.js)
+  │     ├── serves the website
+  │     └── POST /api/contact  ← contact form goes here directly
+  │
+  ├─→ localhost:4201  (Angular)
+  │     └── POST to localhost:3003/api/contact  ← Angular uses Express backend
+  │
+  └─→ localhost:3003  (Express API)
+        └── POST /api/contact  ← used by Angular
+```
+
+---
+
+## Deployment Plan (Vercel)
+
+The **Next.js site** is what gets deployed to `rasoftllc.com`.
+
+### Steps
+
+1. **Push to GitHub**
+   ```bash
+   cd D:/myproject
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git remote add origin https://github.com/YOUR_USERNAME/rasoftllc.git
+   git push -u origin main
+   ```
+
+2. **Import to Vercel**
+   - Go to https://vercel.com
+   - Click "Add New Project"
+   - Import your GitHub repository
+   - Root directory: leave as `/` (it auto-detects Next.js)
+   - Click Deploy
+
+3. **Add Custom Domain**
+   - In Vercel project → Settings → Domains → Add `rasoftllc.com`
+   - Add these DNS records at your domain registrar:
+     ```
+     Type   Name   Value
+     A      @      76.76.21.21
+     CNAME  www    cname.vercel-dns.com
+     ```
+
+4. **Add Email Service** (optional but recommended)
+   - Sign up at https://resend.com
+   - Get an API key
+   - Update `app/api/contact/route.ts` to actually send emails
+
+### What Gets Deployed vs What Stays Local
+
+| Part | Deployed? | Where |
+|------|-----------|-------|
+| Next.js (`app/`, `components/`) | YES | Vercel → rasoftllc.com |
+| Angular (`frontend/`) | NO | Local dev only |
+| Express backend (`backend/`) | NO | Local dev only |
+
+The Angular and Express backend are **development tools only** — the production site
+is just the Next.js project on Vercel.
+
+---
+
+## Quick Reference: Starting Everything
+
+```bash
+# Start Next.js (primary site)
 cd D:/myproject
 npm run dev
 # → http://localhost:3000
-```
 
-### Angular frontend
-```bash
+# Start Angular frontend
 cd D:/myproject/frontend
-npx ng serve --host 0.0.0.0 --port 4200
-# → http://localhost:4200
-# → http://127.0.0.1:4200
-```
+npx ng serve --host 0.0.0.0 --port 4201
+# → http://localhost:4201
 
-### Node.js backend
-```bash
+# Start Express backend
 cd D:/myproject/backend
-PORT=3003 node server.js
+node server.js
 # → http://localhost:3003
 ```
 
 ---
 
-## Pending / Future Work
-- [ ] Replace placeholder email with real company email
-- [ ] Connect contact form email delivery (Nodemailer / SendGrid)
-- [ ] Add real case studies / portfolio
-- [ ] SEO metadata per page
-- [ ] Deploy to production (Vercel for Next.js, Railway/Render for backend)
+## Tech Stack Summary
+
+| Technology | Version | Used For |
+|------------|---------|---------|
+| Next.js | 14 | Primary website framework |
+| React | 18 | UI rendering (via Next.js) |
+| TypeScript | 5 | Type safety across all TS files |
+| Tailwind CSS | 3 | Styling (both Next.js and Angular) |
+| Framer Motion | latest | Animations in Next.js |
+| Angular | 17 | Alternative frontend |
+| Express | 4 | Local API server |
+| Node.js | 24 | Runtime for backend + Angular CLI |
+| Vercel | - | Production hosting |
+
+---
+
+## Important Notes
+
+- The `@` symbol in email addresses inside **Angular templates** must be written as
+  `&#64;` (e.g., `talent&#64;rasoftllc.com`) to avoid Angular error NG5002.
+- The `.gitignore` excludes `node_modules/`, `.env`, `.next/`, `frontend/dist/`,
+  and `frontend/.angular/` — never commit these.
+- All three servers can run simultaneously without conflict as long as they use
+  different ports (3000, 3003, 4201).
