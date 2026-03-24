@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #07090f;
+    color: #dce4f0;
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Marquee */
+@keyframes marquee { to { transform: translateX(-50%); } }
+.animate-marquee { animation: marquee 28s linear infinite; }
+
+/* Blink */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+.animate-blink { animation: blink 1.8s ease-in-out infinite; }
+
+/* Hero shape float */
+@keyframes float-up {
+  from { opacity: 0; transform: translateY(-100px) rotate(calc(var(--rot, 0deg) - 15deg)); }
+  to   { opacity: 1; transform: translateY(0)      rotate(var(--rot, 0deg)); }
+}
+@keyframes bob {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(15px); }
+}
+.shape-enter { animation: float-up 2.4s cubic-bezier(0.23,0.86,0.39,0.96) both; }
+.shape-bob   { animation: bob 12s ease-in-out infinite; }
+
+/* Fade up */
+@keyframes fade-up {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.fade-up { animation: fade-up 0.7s ease both; }
+
+/* Glowing border variable support */
+:root { --black:#000; --white:#fff; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #07090f; }
+::-webkit-scrollbar-thumb { background: #1a2134; border-radius: 3px; }
