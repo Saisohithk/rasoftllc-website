@@ -199,53 +199,102 @@ Browser
 
 ---
 
-## Deployment Plan (Vercel)
+## Deployment Plan
 
 The **Next.js site** is what gets deployed to `rasoftllc.com`.
+The Angular and Express backend are **local development tools only**.
 
-### Steps
+### Step 1 — Push to GitHub (required for all options)
 
-1. **Push to GitHub**
-   ```bash
-   cd D:/myproject
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin https://github.com/YOUR_USERNAME/rasoftllc.git
-   git push -u origin main
-   ```
+```bash
+cd D:/myproject
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/YOUR_USERNAME/rasoftllc.git
+git push -u origin main
+```
 
-2. **Import to Vercel**
-   - Go to https://vercel.com
-   - Click "Add New Project"
-   - Import your GitHub repository
-   - Root directory: leave as `/` (it auto-detects Next.js)
-   - Click Deploy
+---
 
-3. **Add Custom Domain**
-   - In Vercel project → Settings → Domains → Add `rasoftllc.com`
+### Option A — Netlify (Recommended, Free)
+
+Netlify fully supports Next.js with API routes and is very beginner-friendly.
+
+1. Go to https://www.netlify.com and sign up / log in
+2. Click **"Add new site" → "Import an existing project"**
+3. Connect your GitHub account and select the repository
+4. Build settings (Netlify auto-detects Next.js):
+   - Build command: `npm run build`
+   - Publish directory: `.next`
+5. Click **Deploy**
+6. Add custom domain:
+   - Site settings → Domain management → Add domain → `rasoftllc.com`
    - Add these DNS records at your domain registrar:
      ```
-     Type   Name   Value
-     A      @      76.76.21.21
-     CNAME  www    cname.vercel-dns.com
+     Type    Name    Value
+     A       @       75.2.60.5
+     CNAME   www     YOUR-SITE-NAME.netlify.app
      ```
 
-4. **Add Email Service** (optional but recommended)
-   - Sign up at https://resend.com
-   - Get an API key
-   - Update `app/api/contact/route.ts` to actually send emails
+---
+
+### Option B — Railway (Simple, Paid ~$5/mo)
+
+Good if you also want to host the Express backend on the same platform.
+
+1. Go to https://railway.app and sign up
+2. Click **"New Project" → "Deploy from GitHub repo"**
+3. Select your repository
+4. Railway auto-detects Next.js and builds it
+5. Go to Settings → Domains → Add custom domain `rasoftllc.com`
+6. Add the DNS record shown by Railway at your domain registrar
+
+---
+
+### Option C — Render (Free tier available)
+
+1. Go to https://render.com and sign up
+2. Click **"New" → "Web Service"**
+3. Connect GitHub and select your repository
+4. Settings:
+   - Environment: `Node`
+   - Build command: `npm install && npm run build`
+   - Start command: `npm start`
+5. Click **Create Web Service**
+6. Go to Settings → Custom Domains → Add `rasoftllc.com`
+
+---
+
+### Option D — DigitalOcean App Platform (~$5/mo)
+
+1. Go to https://www.digitalocean.com and sign up
+2. Click **"Create" → "Apps"**
+3. Connect GitHub and select your repository
+4. DigitalOcean detects Next.js automatically
+5. Choose the Basic plan ($5/mo)
+6. After deploy: Settings → Domains → Add `rasoftllc.com`
+
+---
 
 ### What Gets Deployed vs What Stays Local
 
 | Part | Deployed? | Where |
 |------|-----------|-------|
-| Next.js (`app/`, `components/`) | YES | Vercel → rasoftllc.com |
+| Next.js (`app/`, `components/`) | YES | Netlify / Railway / Render / DigitalOcean |
 | Angular (`frontend/`) | NO | Local dev only |
 | Express backend (`backend/`) | NO | Local dev only |
 
-The Angular and Express backend are **development tools only** — the production site
-is just the Next.js project on Vercel.
+### Comparison Table
+
+| Platform | Free Tier | Next.js Support | Ease | Best For |
+|----------|-----------|-----------------|------|----------|
+| Netlify | Yes | Full | Easy | Best free option |
+| Railway | No ($5/mo) | Full | Easy | Also hosting backend |
+| Render | Yes (slow) | Full | Medium | Budget option |
+| DigitalOcean | No ($5/mo) | Full | Medium | More control |
+
+**Recommendation: Use Netlify** — free, fast, full Next.js support, easy custom domain.
 
 ---
 
