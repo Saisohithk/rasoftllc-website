@@ -1,0 +1,107 @@
+# ============================================================
+# RA SOFT LLC - Full Project Requirements
+# ============================================================
+# This project is a JavaScript/TypeScript monorepo.
+# It does NOT use Python — there are no pip packages.
+# All package management is done via npm.
+# ============================================================
+
+
+# ============================================================
+# SYSTEM REQUIREMENTS (install these globally on your machine)
+# ============================================================
+
+Node.js >= 18.x          # https://nodejs.org/en/download
+npm >= 9.x               # Comes bundled with Node.js
+Angular CLI >= 17.x      # Install with: npm install -g @angular/cli
+Git >= 2.x               # https://git-scm.com/downloads
+
+
+# ============================================================
+# ROOT / NEXT.JS FRONTEND  (D:/myproject/)
+# ============================================================
+# Install with: npm install  (from project root)
+
+# --- Runtime Dependencies ---
+next@^14.2.0                         # Next.js React framework (App Router)
+react@^18.3.0                        # React core
+react-dom@^18.3.0                    # React DOM renderer
+framer-motion@^11.3.0                # Animation library
+motion@^11.3.0                       # Motion library (companion to framer-motion)
+@radix-ui/react-slot@^1.1.0          # Radix UI slot primitive
+class-variance-authority@^0.7.0      # Utility for class variance (CVA)
+clsx@^2.1.1                          # Conditional className utility
+tailwind-merge@^2.3.0                # Merge conflicting Tailwind classes
+lucide-react@^0.400.0                # Icon library for React
+
+# --- Development Dependencies ---
+typescript@^5.5.0                    # TypeScript compiler
+@types/node@^20.14.0                 # Node.js type definitions
+@types/react@^18.3.0                 # React type definitions
+@types/react-dom@^18.3.0             # React DOM type definitions
+tailwindcss@^3.4.4                   # Tailwind CSS framework
+postcss@^8.4.38                      # PostCSS processor
+autoprefixer@^10.4.19                # CSS vendor prefix automation
+eslint@^8                            # JavaScript/TypeScript linter
+eslint-config-next@14.2.0            # ESLint config for Next.js
+
+
+# ============================================================
+# NODE.JS / EXPRESS BACKEND  (D:/myproject/backend/)
+# ============================================================
+# Install with: npm install  (from backend/ directory)
+
+# --- Runtime Dependencies ---
+express@^4.18.2                      # Express.js web framework
+cors@^2.8.5                          # Cross-Origin Resource Sharing middleware
+
+# --- Development Dependencies ---
+nodemon@^3.0.1                       # Auto-restart server on file changes
+
+
+# ============================================================
+# ANGULAR FRONTEND  (D:/myproject/frontend/)
+# ============================================================
+# Install with: npm install  (from frontend/ directory)
+
+# --- Runtime Dependencies ---
+@angular/animations@^17.3.0          # Angular animations module
+@angular/common@^17.3.0              # Angular common utilities
+@angular/compiler@^17.3.0            # Angular template compiler
+@angular/core@^17.3.0                # Angular core
+@angular/forms@^17.3.0               # Angular reactive & template forms
+@angular/platform-browser@^17.3.0   # Angular browser platform
+@angular/platform-browser-dynamic@^17.3.0  # Angular JIT compiler
+@angular/router@^17.3.0              # Angular routing module
+rxjs@~7.8.0                          # Reactive Extensions for JavaScript
+tslib@^2.3.0                         # TypeScript runtime helpers
+zone.js@~0.14.3                      # Angular change detection
+
+# --- Development Dependencies ---
+@angular-devkit/build-angular@^17.3.0  # Angular build tooling
+@angular/cli@~17.3.0                 # Angular CLI
+@angular/compiler-cli@^17.3.0       # Angular ahead-of-time compiler
+@types/node@^18.18.0                 # Node.js type definitions
+typescript@~5.4.2                    # TypeScript compiler
+tailwindcss@^3.4.4                   # Tailwind CSS framework
+postcss@^8.4.38                      # PostCSS processor
+autoprefixer@^10.4.19                # CSS vendor prefix automation
+
+
+# ============================================================
+# QUICK SETUP SUMMARY
+# ============================================================
+#
+# 1. Install Node.js 18+ from https://nodejs.org
+# 2. Install Angular CLI: npm install -g @angular/cli
+# 3. From project root:    npm install
+# 4. From backend/:        npm install
+# 5. From frontend/:       npm install
+#
+# Run development servers:
+#   Next.js:  npm run dev          (port 3000) — from root
+#   Backend:  npm run dev          (port 3003) — from backend/
+#   Angular:  ng serve             (port 4200) — from frontend/
+#
+# See README.md for full instructions.
+# ============================================================
